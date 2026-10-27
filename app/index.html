@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emotion Detector — NLP Project</title>
+  <meta name="description" content="AI-powered emotion detection from text using TF-IDF and Machine Learning. Detects Joy, Sadness, Anger, Fear, Surprise, and Love." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Animated background canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- ── Header ── -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">🧠</span>
+        <span class="logo-text">EmotionAI</span>
+      </div>
+      <div class="header-badge">NLP Project</div>
+    </div>
+  </header>
+
+  <!-- ── Main ── -->
+  <main class="main">
+
+    <!-- Hero section -->
+    <section class="hero">
+      <div class="hero-tag">Powered by TF-IDF + Machine Learning</div>
+      <h1 class="hero-title">
+        Detect <span class="gradient-text">Emotions</span><br/>from Any Text
+      </h1>
+      <p class="hero-subtitle">
+        Enter a sentence, tweet, or paragraph and our model will instantly identify the dominant emotion —
+        <strong>Joy, Sadness, Anger, Fear, Surprise,</strong> or <strong>Love</strong>.
+      </p>
+    </section>
+
+    <!-- ── Input Card ── -->
+    <div class="card input-card" id="input-card">
+      <div class="card-label">Enter your text</div>
+      <div class="textarea-wrapper">
+        <textarea
+          id="text-input"
+          placeholder="Type something like... &quot;I can't believe how amazing today has been!&quot;"
+          maxlength="1000"
+          rows="5"
+          aria-label="Text input for emotion detection"
+        ></textarea>
+        <div class="char-count"><span id="char-count">0</span> / 1000</div>
+      </div>
+
+      <!-- Example chips -->
+      <div class="examples-label">Try an example:</div>
+      <div class="examples-row" id="examples-row">
+        <button class="example-chip" data-text="I am so happy today, everything is going perfectly!" id="chip-joy">😄 Joy</button>
+        <button class="example-chip" data-text="I miss my friend so much, it hurts to even think about them." id="chip-sadness">😢 Sadness</button>
+        <button class="example-chip" data-text="How dare they do this! I am absolutely furious!" id="chip-anger">😠 Anger</button>
+        <button class="example-chip" data-text="I'm terrified about what might happen next." id="chip-fear">😨 Fear</button>
+        <button class="example-chip" data-text="Oh wow, I totally did not see that coming!" id="chip-surprise">😲 Surprise</button>
+        <button class="example-chip" data-text="I feel butterflies every time I see her smile." id="chip-love">🥰 Love</button>
+      </div>
+
+      <button class="detect-btn" id="detect-btn" onclick="detectEmotion()" aria-label="Detect emotion from input text">
+        <span class="btn-icon">⚡</span>
+        <span class="btn-text">Detect Emotion</span>
+        <span class="btn-loader" id="btn-loader" hidden>
+          <span class="spinner"></span>
+        </span>
+      </button>
+    </div>
+
+    <!-- ── Result Card ── -->
+    <div class="card result-card hidden" id="result-card" aria-live="polite">
+
+      <div class="result-header">
+        <div class="result-emoji" id="result-emoji">😄</div>
+        <div class="result-info">
+          <div class="result-label">Primary Emotion</div>
+          <div class="result-emotion" id="result-emotion">Joy</div>
+          <div class="result-confidence" id="result-confidence">Confidence: 87.3%</div>
+        </div>
+        <div class="result-badge" id="result-badge">High Confidence</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- All emotions breakdown -->
+      <div class="breakdown-label">Emotion Breakdown</div>
+      <div class="emotion-bars" id="emotion-bars">
+        <!-- Injected by JS -->
+      </div>
+
+      <div class="result-footer">
+        <span class="model-tag" id="model-tag">Model: Logistic Regression</span>
+        <button class="reset-btn" onclick="resetUI()" id="reset-btn" aria-label="Clear and reset">
+          ↩ Try another
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Error Banner ── -->
+    <div class="error-banner hidden" id="error-banner" role="alert">
+      <span class="error-icon">⚠️</span>
+      <span id="error-msg">Something went wrong. Make sure the Flask server is running.</span>
+    </div>
+
+    <!-- ── Stats Row ── -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num">16,000+</div>
+        <div class="stat-label">Training Samples</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Emotion Classes</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">~90%</div>
+        <div class="stat-label">Model Accuracy</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">TF-IDF</div>
+        <div class="stat-label">Feature Extraction</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <p>NLP Project — GoEmotions Dataset (Google) &nbsp;|&nbsp; Built with scikit-learn + Flask</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
