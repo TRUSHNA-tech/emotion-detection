@@ -1,0 +1,29 @@
+{
+  "model_name": "Linear SVM",
+  "accuracy": 0.9103,
+  "macro_f1": 0.874,
+  "label_map": {
+    "0": "Sadness",
+    "1": "Joy",
+    "2": "Love",
+    "3": "Anger",
+    "4": "Fear",
+    "5": "Surprise"
+  },
+  "emotion_emojis": {
+    "Sadness": "😢",
+    "Joy": "😄",
+    "Love": "🥰",
+    "Anger": "😠",
+    "Fear": "😨",
+    "Surprise": "😲"
+  },
+  "emotion_colors": {
+    "Sadness": "#5B9BD5",
+    "Joy": "#FFD700",
+    "Love": "#FF69B4",
+    "Anger": "#FF4500",
+    "Fear": "#9370DB",
+    "Surprise": "#32CD32"
+  }
+}
