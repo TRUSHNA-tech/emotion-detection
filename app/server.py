@@ -37,7 +37,7 @@ with open(os.path.join(MODEL_DIR, 'tfidf_vectorizer.pkl'), 'rb') as f:
 with open(os.path.join(MODEL_DIR, 'emotion_classifier.pkl'), 'rb') as f:
     model = pickle.load(f)
 
-with open(os.path.join(MODEL_DIR, 'metadata.json'), 'r') as f:
+with open(os.path.join(MODEL_DIR, 'metadata.json'), 'r', encoding='utf-8') as f:
     metadata = json.load(f)
 
 LABEL_MAP      = {int(k): v for k, v in metadata['label_map'].items()}
